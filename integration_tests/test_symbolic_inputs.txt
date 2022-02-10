@@ -1,0 +1,4 @@
+[ -e ../src/ ]
+[ -f ../CMakeLists.txt ]
+[ -d ../unit_tests/ ]
+exit

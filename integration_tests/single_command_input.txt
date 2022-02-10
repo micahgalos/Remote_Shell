@@ -1,0 +1,6 @@
+echo A #echo B
+echo B #&& echo C
+echo C && echo D #&& echo E
+echo E#; echo F
+echo F #|| echo G
+exit

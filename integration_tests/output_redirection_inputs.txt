@@ -1,0 +1,5 @@
+echo This_Is_A_Tale_Of > textOutput.txt
+echo Captain_Jack_Sparrow >> textOutput.txt
+echo Pirates_So_Brave_On >> textOutput.txt
+echo The_Seven_Seas >> textOutput.txt
+exit

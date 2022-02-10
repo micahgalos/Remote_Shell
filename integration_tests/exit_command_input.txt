@@ -1,0 +1,5 @@
+echo A && exit #B
+echo B || exit #C
+echo D; exit #E
+echo F #exit #G
+exit

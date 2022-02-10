@@ -1,0 +1,4 @@
+cat inputPipe.txt
+cat < inputPipe.txt | tr CanIGetUh canigetuh > outputPipe.txt
+cat outputPipe.txt
+exit

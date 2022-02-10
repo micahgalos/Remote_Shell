@@ -1,0 +1,2 @@
+cat < textInputs.txt
+exit

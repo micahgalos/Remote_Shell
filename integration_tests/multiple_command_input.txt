@@ -1,0 +1,4 @@
+echo hello world || ls -a
+echo "test two conditions"; echo this initial 
+echo "this is a test" || echo "first test failed" || ls
+exit
