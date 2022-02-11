@@ -1,7 +1,6 @@
 #ifndef __RSHELL_H__
 #define __RSHELL_H__
 
-
 #include "base.h"
 #include <vector>
 #include <string>
@@ -14,16 +13,12 @@ using namespace std;
 class connectingStrings { //was made to check the connectors that are next to the parenthesis recursively
 	public:
 	connectingStrings(const string & num) :num(num) { }
-        vector<connectingStrings*> templist; //everything thats within the parenthesis for commands and connectors
-        string num; //the certain type of connector which is &&, ;, ||, <, >, >>, |
+    vector<connectingStrings*> templist; //everything thats within the parenthesis for commands and connectors
+    string num; //the certain type of connector which is &&, ;, ||, <, >, >>, |
 };
 
-
-
-
-
 class rShell{ 
-   public:
+	public:
     rShell() {}; 
     void show();
     void clear();
@@ -36,7 +31,8 @@ class rShell{
     void commandDesign();
     void constructCommands();
     Base * designtree(vector<connectingStrings*> connectingList);
-   private:
+
+	private:
     queue<Base*> commandlist;
     vector<Base*> treeDesign;
     vector<connectingStrings*> connectingList;
@@ -46,7 +42,4 @@ class rShell{
     string userInput;
     Base* cmd;
 };
-
-
-
 #endif

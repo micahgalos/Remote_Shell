@@ -6,24 +6,16 @@
 using namespace std;
 
 class Connect : public Base{
-
-   protected:
+    protected:
     Base* left;
     Base* right;
 
-
-
-   public:
+    public:
     Connect() {
-     left = 0;
-     right = 0;
+        left = 0;
+        right = 0;
     };
     
     virtual bool construct() = 0;
-
 };
-
-
-
-
 #endif

@@ -2,9 +2,7 @@
 
 using namespace std;
 
-	
 #include "rshell.h"
-
 
 int main() {
     rShell doit;		
@@ -20,6 +18,5 @@ int main() {
         doit.parsing(command); //commands  in parse to help with main
         doit.commandDesign(); //pops the commands out of the list and runs them for the function
     }
-return 0;
-
+    return 0;
 }
