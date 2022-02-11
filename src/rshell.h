@@ -1,7 +1,9 @@
-#ifndef __RSHELL_H__
-#define __RSHELL_H__
+#ifndef RSHELL_H__
+#define RSHELL_H__
 
 #include "base.h"
+#include "connectingStrings.h"
+
 #include <vector>
 #include <string>
 #include <queue>
@@ -9,13 +11,6 @@
 #include <stack>
 
 using namespace std;
-
-class connectingStrings { //was made to check the connectors that are next to the parenthesis recursively
-	public:
-	connectingStrings(const string & num) :num(num) { }
-    vector<connectingStrings*> templist; //everything thats within the parenthesis for commands and connectors
-    string num; //the certain type of connector which is &&, ;, ||, <, >, >>, |
-};
 
 class rShell{ 
 	public:

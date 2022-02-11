@@ -12,7 +12,12 @@
 #include "../src/command.h"
 #include "../src/connect.h"
 #include "../src/rshell.h"
+#include "../src/connectingStrings.h"
 #include "../src/redirect.h"
+#include "../src/redirectin.h"
+#include "../src/redirectout.h"
+#include "../src/redirectdoubleout.h"
+#include "../src/piping.h"
 
 #include <string>
 

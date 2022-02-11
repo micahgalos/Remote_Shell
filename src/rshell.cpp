@@ -15,6 +15,10 @@
 #include "command.h"
 #include "base.h"
 #include "redirect.h" //added for part 4 of this assignment
+#include "redirectin.h"
+#include "redirectout.h"
+#include "redirectdoubleout.h"
+#include "piping.h"
 
 using namespace std;
 
@@ -363,14 +367,14 @@ Base* rShell::designtree(vector<connectingStrings*> connectingList) {
 					commandlist.pop();
 					rightside = commandlist.front();
 					commandlist.pop();
-					connects = new Input_redirect(leftside, rightside, "<");
+					connects = new RedirectIn(leftside, rightside, "<");
 					treeDesign.push_back(connects);
 				}
 				else {
 					leftside = commandlist.front();
 					commandlist.pop();
 					rightside = designtree(connectingList[g]->templist);
-					connects = new Input_redirect(leftside, rightside, "<");
+					connects = new RedirectIn(leftside, rightside, "<");
 					treeDesign.push_back(connects);
 				}
 			}
@@ -380,14 +384,14 @@ Base* rShell::designtree(vector<connectingStrings*> connectingList) {
 					treeDesign.pop_back();
 					rightside = commandlist.front();
 					commandlist.pop();
-					connects = new Input_redirect(leftside, rightside, "<");
+					connects = new RedirectIn(leftside, rightside, "<");
 					treeDesign.push_back(connects);
 				}
 				else {
 					leftside = treeDesign.back();
 					treeDesign.pop_back();
 					rightside = designtree(connectingList[g]->templist);
-					connects = new Input_redirect(leftside, rightside, "<");
+					connects = new RedirectIn(leftside, rightside, "<");
 					treeDesign.push_back(connects);
 				}
 			}
@@ -400,14 +404,14 @@ Base* rShell::designtree(vector<connectingStrings*> connectingList) {
 					commandlist.pop();
 					rightside = commandlist.front();
 					commandlist.pop();
-					connects = new Output_redirect(leftside, rightside,">");
+					connects = new RedirectOut(leftside, rightside,">");
 					treeDesign.push_back(connects);
 				}
 				else {
 					leftside = commandlist.front();
 					commandlist.pop();
 					rightside = designtree(connectingList[g]->templist);
-					connects = new Output_redirect(leftside, rightside, ">");
+					connects = new RedirectOut(leftside, rightside, ">");
 					treeDesign.push_back(connects);
 				}
 			}
@@ -417,14 +421,14 @@ Base* rShell::designtree(vector<connectingStrings*> connectingList) {
 					treeDesign.pop_back();
 					rightside = commandlist.front();
 					commandlist.pop();
-					connects = new Output_redirect(leftside, rightside, ">");
+					connects = new RedirectOut(leftside, rightside, ">");
 					treeDesign.push_back(connects);
 				}
 				else {
 					leftside = treeDesign.back();
 					treeDesign.pop_back();
 					rightside = designtree(connectingList[g]->templist);
-					connects = new Output_redirect(leftside, rightside, ">");
+					connects = new RedirectOut(leftside, rightside, ">");
 					treeDesign.push_back(connects);
 				}
 			}
@@ -437,14 +441,14 @@ Base* rShell::designtree(vector<connectingStrings*> connectingList) {
 					commandlist.pop();
 					rightside = commandlist.front();
 					commandlist.pop();
-					connects = new DoubleOutput_redirect(leftside, rightside, ">>");
+					connects = new RedirectDoubleOut(leftside, rightside, ">>");
 					treeDesign.push_back(connects);
 				}
 				else {
 					leftside = commandlist.front();
 					commandlist.pop();
 					rightside = designtree(connectingList[g]->templist);
-					connects = new DoubleOutput_redirect(leftside, rightside, ">>");
+					connects = new RedirectDoubleOut(leftside, rightside, ">>");
 					treeDesign.push_back(connects);
 				}
 			}
@@ -454,14 +458,14 @@ Base* rShell::designtree(vector<connectingStrings*> connectingList) {
 					treeDesign.pop_back();
 					rightside = commandlist.front();
 					commandlist.pop();
-					connects = new DoubleOutput_redirect(leftside, rightside, ">>");
+					connects = new RedirectDoubleOut(leftside, rightside, ">>");
 					treeDesign.push_back(connects);
 				}
 				else {
 					leftside = treeDesign.back();
 					treeDesign.pop_back();
 					rightside = designtree(connectingList[g]->templist);
-					connects = new DoubleOutput_redirect(leftside, rightside, ">>");
+					connects = new RedirectDoubleOut(leftside, rightside, ">>");
 					treeDesign.push_back(connects);
 				}
 			}
