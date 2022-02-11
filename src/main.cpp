@@ -7,11 +7,9 @@ using namespace std;
 int main() {
     rShell doit;		
     string command;
-    vector<string> commandVec;
     while(command != "exit"){
         doit.show();
         getline(cin, command);
-        cout << endl;
         if(command == "exit"){
             break;
         }
