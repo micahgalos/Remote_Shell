@@ -125,9 +125,11 @@ Base* rShell::designtree(vector<connectingStrings*> connectingList) {
 	Base* leftside; //left hand side of the command which is seperated by a connector
 	Base* rightside; //right hand side of the command which is seperated by a connector
 	Base* connects = 0; //this is the result that is formed from a tree and shown in the vector as a final result
-    
-	for (unsigned int g = 0; g < connectingList.size(); ++g) { //this is the iteration through the command and it takes note of the connectors that it sees  
-    	if (connectingList[g]->num == ";") {  //this is specific to the ; collector if it comes in a command
+    int g = 0;
+
+	for (connectingStrings* i : connectingList) { //this is the iteration through the command and it takes note of the connectors that it sees  
+		g++;
+		if (connectingList[g]->num == ";") {  //this is specific to the ; collector if it comes in a command
 			if (treeDesign.empty()) {   //tree starts out being empty b/c nothing in it
 				if (connectingList[g]->templist.empty()) { //this case assumes that there is no parentheses within the command such as echo a; echo b  
 					leftside = commandlist.front(); //this takes in the left hand size of the command and forms it into a tree
