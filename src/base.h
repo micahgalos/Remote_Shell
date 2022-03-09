@@ -1,16 +1,7 @@
 #ifndef BASE_H
 #define BASE_H
 
-#include <sys/wait.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <iostream>
-#include <stdio.h>
-#include <vector>
-#include <string>
-
-using namespace std;
+#include "csheaders.h"
 
 class Base {
 	public:
@@ -21,7 +12,7 @@ class Base {
 	}
 
 	Base(string command) {
-		this -> command = command;
+		this->command = command;
 		fileInput = 0;
 		fileOutput = 1;
 	}

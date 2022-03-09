@@ -3,14 +3,6 @@
 
 #include "redirect.h"
 
-#include <iostream>
-#include <string>
-#include <unistd.h> //this is the libarary for the fork command
-#include <fcntl.h>
-#include <sys/stat.h>
-
-using namespace std;
-
 // this is for this command |, I got the specific commands for it based off what the bash told me and videos I found online
 // one for reading and one for writing
 class Piping : public Redirect{

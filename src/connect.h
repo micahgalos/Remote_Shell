@@ -2,8 +2,6 @@
 #define CONNECT_H
 
 #include "base.h"
-#include <iostream>
-using namespace std;
 
 class Connect : public Base{
     protected:
@@ -11,6 +9,8 @@ class Connect : public Base{
     Base* right;
 
     public:
+
+    // left [connect] right
     Connect() {
         left = 0;
         right = 0;

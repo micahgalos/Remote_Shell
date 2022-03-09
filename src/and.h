@@ -2,7 +2,6 @@
 #define AND_H
 
 #include "connect.h"
-using namespace std;
 
 class And : public Connect {
 	public:
@@ -13,9 +12,9 @@ class And : public Connect {
 		this->right = right;
 	}
     
-	//this connector will only execute the command if the first argument does then second one will follow it
+	// Construct command when conditions are true
     bool construct(){
-		if(left->construct()) { return right-> construct(); }
+		if(left->construct()) { return right->construct(); }
 		return false;
 	}
 };

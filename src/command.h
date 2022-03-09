@@ -3,20 +3,6 @@
 
 #include "base.h"
 
-#include <iostream>
-#include <string>
-#include <sys/wait.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <sstream> //for when your using .c_str()
-#include <vector>
-#include <unistd.h> //this is for the fork commands in the end
-#include <cstdio>
-
-#include <cstdlib>
-
-using namespace std;
-
 class Command : public Base{
 	public:
 	Command() {};
@@ -117,7 +103,7 @@ class Command : public Base{
 
 			if (execvp(points[0], points.data()) == -1) {
 				dup2(outputFile, STDOUT_FILENO); //by default we bring it here
-				cout << "rshell " << points[0] << ":wasn't found in this command" << endl;
+				cout << "rshell " << points[0] << ": wasn't found in this command" << endl;
 				exit(EXIT_FAILURE);
 			}
 		}

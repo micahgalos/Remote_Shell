@@ -1,31 +1,23 @@
-#ifndef RSHELL_H__
-#define RSHELL_H__
+#ifndef RSHELL_H_
+#define RSHELL_H_
 
 #include "base.h"
 #include "command.h"
-#include "connectingStrings.h"
+#include "connectStrings.h"
 
-#include <vector>
-#include <string>
-#include <queue>
-#include <iostream>
-#include <stack>
-
-using namespace std;
-
-class rShell{ 
+class RShell{ 
 	public:
-    rShell() {};
+    RShell() {};
 
     // first line on start-up
-    void show() { cout << "$ "; }
+    void interface() { cout << "$ "; }
 
     // this is to clears all the vectors in the process of doing the parsing for 
     // the command and connectors that are  going through the command to give the answer
     void clear(){
         listUser.clear();
         vecdex.clear();
-        connectingList.clear();
+        connectList.clear();
         if (!parenthesis.empty()){	
             stack<string>().swap(parenthesis);
         }
@@ -89,7 +81,7 @@ class rShell{
             }
         }
     }
-    void connectParsing(unsigned int temp, vector<connectingStrings*> & connectingList);
+    void connectParsing(unsigned int temp, vector<connectStrings*> & connectList);
 
     // ( to ) and more
     void parsing(string commandline){
@@ -99,7 +91,7 @@ class rShell{
         commentParsing();
         userSpacing();
         userSplitting();
-        connectParsing(temp, connectingList);
+        connectParsing(temp, connectList);
         parenthesisParsing();	
     }
     
@@ -108,7 +100,7 @@ class rShell{
     void commandDesign(){
         constructCommands();
         if (commandlist.size() >= 2) {
-            treeDesign.push_back(designtree(connectingList));
+            treeDesign.push_back(designtree(connectList));
             while (!treeDesign.empty()){
                     treeDesign.back()->construct();
                     treeDesign.pop_back();
@@ -147,12 +139,12 @@ class rShell{
         if (next) { commandlist.push(cmd); }
     }
 
-    Base * designtree(vector<connectingStrings*> connectingList);
+    Base * designtree(vector<connectStrings*> connectList);
 
 	private:
     queue<Base*> commandlist;
     vector<Base*> treeDesign;
-    vector<connectingStrings*> connectingList;
+    vector<connectStrings*> connectList;
     vector<unsigned int> vecdex;
     stack<string> parenthesis;
     vector<string> listUser;

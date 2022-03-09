@@ -1,20 +1,18 @@
-#include <iostream> 
+#include "rshell.h"
 
 using namespace std;
 
-#include "rshell.h"
-
 int main() {
-    rShell doit;		
+    RShell terminal;		
     string command;
     while(command != "exit"){
-        doit.show();
+        terminal.interface();
         getline(cin, command);
         if(command == "exit"){
             break;
         }
-        doit.parsing(command); //commands  in parse to help with main
-        doit.commandDesign(); //pops the commands out of the list and runs them for the function
+        terminal.parsing(command); //commands  in parse to help with main
+        terminal.commandDesign(); //pops the commands out of the list and runs them for the function
     }
     return 0;
 }

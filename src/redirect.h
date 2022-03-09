@@ -3,14 +3,6 @@
 
 #include "base.h"
 
-#include <iostream>
-#include <string>
-#include <unistd.h> //this is the libarary for the fork command
-#include <fcntl.h>
-#include <sys/stat.h>
-
-using namespace std;
-
 class Redirect: public Base{
 	protected:
 	Base* left;
