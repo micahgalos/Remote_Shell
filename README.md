@@ -23,7 +23,7 @@ We are creating an R-shell terminal for CS100 in the Spring 2019. We are bascial
   - pipe_operator_tests.sh
 - The user can access these tests by the following:
 ```c++
-cd spring-2019-assignment-edwin_and_george/ -> cd integration_tests/ -> ./[bash script filename].sh 
+cd CS100_RShell_SPR19/ -> cd integration_tests/ -> ./[bash script filename].sh 
 ```
 
 ## Classes
