@@ -14,7 +14,7 @@ class In : public Redirect{
 		int fileInput = open(ots.c_str(), O_RDONLY);  //specific for dup, getting the file descriptor 
 		
 		if(fileInput == -1) {
-			cout << "error in the Rshell :in the ots" << ots << "its not there\n";
+			cout << "error in the Rshell :in the ots " << ots << " does not exit\n";
 			return false;
 		}
 
