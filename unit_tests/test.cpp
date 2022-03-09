@@ -24,17 +24,17 @@
 using namespace std;
 
 TEST(ParsingTest,lscommand) {
-	rShell runit;
+	RShell runit;
 	string commandline = "ls || ls";
 	runit.parsing(commandline);
 }
 TEST(BasicTest,Basiccommand) {
-	rShell runit;
+	RShell runit;
 	string commandline = "echo hello world";
 	string command = "ls; ls -a";
 	::testing::internal::CaptureStdout();
 	cout.flush();
-	runit.show();
+	runit.interface();
 	runit.parsing(commandline);
 	runit.commandDesign();
 	string commandOut = ::testing::internal::GetCapturedStdout();
@@ -42,12 +42,12 @@ TEST(BasicTest,Basiccommand) {
 }
 
 TEST(AndTest,Andcommand) {
-	rShell runit;
+	RShell runit;
 	string commandline = "echo A && echo B";
 	string command = "ls; ls -a";
 	::testing::internal::CaptureStdout();
 	cout.flush();
-	runit.show();
+	runit.interface();
 	runit.parsing(commandline);
 	runit.commandDesign();
 	string commandOut = ::testing::internal::GetCapturedStdout();
@@ -55,12 +55,12 @@ TEST(AndTest,Andcommand) {
 }
 
 TEST(OrTest,Orcommand) {
-	rShell runit;
+	RShell runit;
 	string commandline = "echo A || echo B";
 	string command = "ls; ls -a";
 	::testing::internal::CaptureStdout();
 	cout.flush();
-	runit.show();
+	runit.interface();
 	runit.parsing(commandline);
 	runit.commandDesign();
 	string commandOut = ::testing::internal::GetCapturedStdout();
@@ -68,12 +68,12 @@ TEST(OrTest,Orcommand) {
 }
 
 TEST(Semi_colonTest,Semic_coloncommand) {
-	rShell runit;
+	RShell runit;
 	string commandline = "echo A ; echo B";
 	string command = "ls; ls -a";
 	::testing::internal::CaptureStdout();
 	cout.flush();
-	runit.show();
+	runit.interface();
 	runit.parsing(commandline);
 	runit.parsing(commandline);
 	runit.commandDesign();
@@ -82,12 +82,12 @@ TEST(Semi_colonTest,Semic_coloncommand) {
 }
 
 TEST(PrecedenceTest,Precdencecommand) {
-	rShell runit;
+	RShell runit;
 	string commandline = "(echo A && echo B) || (echo C && echo D)";
 	string command = "ls; ls -a";
 	::testing::internal::CaptureStdout();
 	cout.flush();
-	runit.show();
+	runit.interface();
 	runit.parsing(commandline);
 	runit.commandDesign();
 	string commandOut = ::testing::internal::GetCapturedStdout();
@@ -95,12 +95,12 @@ TEST(PrecedenceTest,Precdencecommand) {
 }
 
 TEST(CommandTest,CommandTestcommand) {
-	rShell runit;
+	RShell runit;
 	string commandline = "test -d src/main.cpp && echo path exits";
 	string command = "ls; ls -a";
 	::testing::internal::CaptureStdout();
 	cout.flush();
-	runit.show();
+	runit.interface();
 	runit.parsing(commandline);
 	runit.commandDesign();
 	string commandOut = ::testing::internal::GetCapturedStdout();
@@ -108,13 +108,13 @@ TEST(CommandTest,CommandTestcommand) {
 }
 
 TEST(GivenTest,GivenTestCommand) {
-	rShell runit;
+	RShell runit;
 	string commandline = "cat < existingInputFile | tr A-Z a-z | tee newOutputFile1 | tr a-z A-Z > newOutputFile2";
 	::testing::internal::CaptureStdout();
 	Command* comm = new Command();
 	comm-> comm.push_back(commandline);
 	EXPECT_FALSE(comm -> construct());
-	runit.show();
+	runit.interface();
 	runit.parsing(commandline);
 	runit.commandDesign();
 	string commandOut = ::testing::internal::GetCapturedStdout();
@@ -122,13 +122,13 @@ TEST(GivenTest,GivenTestCommand) {
 }
 
 TEST(Input_RedirectTest,Input_RedirectCommand) {
-	rShell runit;
+	RShell runit;
 	string commandline = "echo wolf < real.txt";
 	::testing::internal::CaptureStdout();
 	Command* comm = new Command();
 	comm-> comm.push_back(commandline);
 	EXPECT_FALSE(comm -> construct());
-	runit.show();
+	runit.interface();
 	runit.parsing(commandline);
 	runit.commandDesign();
 	string commandOut = ::testing::internal::GetCapturedStdout();
@@ -136,13 +136,13 @@ TEST(Input_RedirectTest,Input_RedirectCommand) {
 }
 
 TEST(Output_RedirectTest,Output_RedirectCommand) {
-	rShell runit;
+	RShell runit;
 	string commandline = "echo goat  >  text.txt";
 	::testing::internal::CaptureStdout();
 	Command* comm = new Command();
 	comm-> comm.push_back(commandline);
 	EXPECT_FALSE(comm -> construct());
-	runit.show();
+	runit.interface();
 	runit.parsing(commandline);
 	runit.commandDesign();
 	string commandOut = ::testing::internal::GetCapturedStdout();
@@ -151,13 +151,13 @@ TEST(Output_RedirectTest,Output_RedirectCommand) {
 
 
 TEST(Double_RedirectTest,Double_RedirectCommand) {
-	rShell runit;
+	RShell runit;
 	string commandline = "echo base stats  >>  next.txt";
 	::testing::internal::CaptureStdout();
 	Command* comm = new Command();
 	comm-> comm.push_back(commandline);
 	EXPECT_FALSE(comm -> construct());
-	runit.show();
+	runit.interface();
 	runit.parsing(commandline);
 	runit.commandDesign();
 	string commandOut = ::testing::internal::GetCapturedStdout();
@@ -166,13 +166,13 @@ TEST(Double_RedirectTest,Double_RedirectCommand) {
 
 
 TEST(PipingTest,PipingCommand) {
-	rShell runit;
+	RShell runit;
 	string commandline = "echo taking dubs | dubs.txt";
 	::testing::internal::CaptureStdout();
 	Command* comm = new Command();
 	comm-> comm.push_back(commandline);
 	EXPECT_FALSE(comm -> construct());
-	runit.show();
+	runit.interface();
 	runit.parsing(commandline);
 	runit.commandDesign();
 	string commandOut = ::testing::internal::GetCapturedStdout();
@@ -180,13 +180,13 @@ TEST(PipingTest,PipingCommand) {
 }
 
 TEST(Combo_RedirectTest,Combo_RedirectCommand) {
-	rShell runit;
+	RShell runit;
 	string commandline = "cat <  news.txt | echo nice watch";
 	::testing::internal::CaptureStdout();
 	Command* comm = new Command();
 	comm-> comm.push_back(commandline);
 	EXPECT_FALSE(comm -> construct());
-	runit.show();
+	runit.interface();
 	runit.parsing(commandline);
 	runit.commandDesign();
 	string commandOut = ::testing::internal::GetCapturedStdout();
