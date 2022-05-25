@@ -7,7 +7,7 @@
 We are creating an R-shell terminal for CS100 in the Spring 2019. We are bascially creating and running a Linux command shell that runs command prompts, reads lines of commands and connectors from standard inputs. We also are going to make sure that the connectors are seperated by either an OR, AND, or semicolon. Also, this will be constructed using a composite pattern approach to create a hierarchy of objects using our classes composite functionality.  
 
 ## UML Diagram
-![CS100-UML Diagram](https://github.com/cs100/spring-2019-assignment-edwin_and_george/blob/master/images/Assignment%20hw4.png?raw=true)
+![UML Diagram](https://github.com/micahgalos/CS100_RShell_SPR19/blob/main/images/Assignment%20hw4.png?raw=true)
 
 ## Unit and Integration Tests
 - The current build has the following bash integration test scripts:
